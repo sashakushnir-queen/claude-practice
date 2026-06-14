@@ -1,5 +1,5 @@
 import pytest
-from calculator import add, subtract, multiply, power, divide
+from calculator import add, subtract, multiply, power, divide, square_root
 
 
 def test_add_positive_numbers():
@@ -51,3 +51,14 @@ def test_divide_resulting_in_float():
 def test_divide_by_zero_raises():
     with pytest.raises(ValueError, match="Cannot divide by zero"):
         divide(5, 0)
+
+
+def test_square_root_positive_number():
+    assert square_root(9) == 3.0
+
+def test_square_root_zero():
+    assert square_root(0) == 0.0
+
+def test_square_root_negative_raises():
+    with pytest.raises(ValueError, match="Cannot take square root of a negative number"):
+        square_root(-4)
